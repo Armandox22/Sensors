@@ -29,12 +29,12 @@ public class IMU {
 	
 	//Notation "w" stands for one of the axes, so for example RwAcc[0],RwAcc[1],RwAcc[2] means RxAcc,RyAcc,RzAcc
 	//Variables below must be global (their previous value is used in getEstimatedInclination)
-	float RwEst[];     				// Rw estimated from combining RwAcc and RwGyro
+	public float RwEst[];     				// Rw estimated from combining RwAcc and RwGyro
 	long lastMicros;  
 
 	// Variables below don't need to be global but we expose them for debug purposes
 	long interval; 					// interval since previous analog samples
-	float RwAcc[];         			// projection of normalized gravitation force vector on x/y/z axis, as measured by accelerometer
+	public float RwAcc[];         			// projection of normalized gravitation force vector on x/y/z axis, as measured by accelerometer
 	float RwGyro[];        			// Rw obtained from last estimated value and gyro movement
 	float Awz[];           			// angles between projection of R on XZ/YZ plane and Z axis (deg)
 	
@@ -42,7 +42,7 @@ public class IMU {
 	
 	// constructor
 	// initialize some variables
-	IMU() {
+	public IMU() {
 		an = new int [INPUT_COUNT];	// analog inputs
 		
 		RwEst = new float [3];
@@ -59,7 +59,7 @@ public class IMU {
 	
 	
 	// Guide: setup method in arduino - http://arduino.cc/en/Reference/setup
-	void setup() {
+	public void setup() {
 		  int i;
 		  
 		  // Guide - what is Serial.begin? Sets the data rate in bits per sec for serial data transmission
@@ -115,7 +115,7 @@ public class IMU {
 		*/
 	}
 	
-	void getEstimatedInclination() {
+	public void getEstimatedInclination() {
 		  
 		// remove static from all variables
 		int i = 0;
